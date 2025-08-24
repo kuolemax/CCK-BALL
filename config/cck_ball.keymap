@@ -44,6 +44,15 @@
         };
     };
 
+    behaviors {
+        scroll_encoder: scroll_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "SCROLL_ENCODER";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -55,7 +64,9 @@
 &kp LEFT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &kp LEFT_WIN  &lt 1 SPACE  &kp LEFT_ALT  &kp ENTER  &lt 2 BACKSPACE  &kp RIGHT_ALT  &mkp MB1  &mkp MB2   &kp ENTER
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                <&scroll_encoder>;
         };
 
         num_layers {
